@@ -22,10 +22,19 @@
 
 h1{
     font-family: Soleil,Helvetica,Arial,sans-serif;
+    position: relative;
+    top: 35%;
+}
+
+h2{
+    font-size: 30px !important;
+    margin: 0px !important;
 }
 
 h3{
-    font-size: 20px !important;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 50px !important;
+    font-weight: 500 !important;
 }
 
 .popis_gradova{
@@ -35,3 +44,4 @@ h3{
     margin: 0px 0px 1px 0px;
     text-align: center;
 }
+
