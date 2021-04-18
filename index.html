@@ -21,7 +21,7 @@
                 <form class="d-flex d-block flex-row mx-md-auto mx-0">
                     <input class="form-control me-2" type="search" placeholder="Pretraži event" aria-label="Search" size="40px" id="search">
                 </form><br>
-                <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button">Dodaj događaj</button>
+                <button class="btn btn-outline-success" id="dodaj" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button">Dodaj događaj</button>
             </div>
         </div>
     </nav>
@@ -32,7 +32,7 @@
 
 <div class="container-fluid">   
                 
-    <div class="row" style=" background-color: salmon;">
+    <div class="row" id="najpopularniji"><!-- style="background-color: #04b4d4;"-->
         <div class="col" style="height: auto;">
             <div class="col" style="height: auto; text-align: center; padding-top: 30px; padding-bottom: 30px;">
                 <h3>Najpopularniji događaji</h3>
@@ -92,20 +92,28 @@
 
     
                 
-    <div class="row" style="background-color: royalblue; margin-top: 40px;">
+    <div class="row" id="najnoviji" style="margin-top: 0px;"><!--background-color: #0449c7; -->
         <div class="col">
             <div class="col" style="height: auto; text-align: center; padding-top: 30px; padding-bottom: 30px;">
                 <h3>Najnoviji događaji</h3>
             </div>
 
-            <div class="row" style=" background-color: aquamarine;">
+            <div class="row" id="izbornik"><!-- style=" background-color: aquamarine;"-->
                 <div class="col" style="height: auto; text-align: center;">
+<<<<<<< HEAD
                     <button class="btn btn-outline-success" type="button" onclick="filterKoncert()">Koncert</button>
                     <button class="btn btn-outline-success" type="button" onclick="filterProsvjed()">Prosvjed</button>
                     <button class="btn btn-outline-success" type="button" onclick="filterRadionica()">Radionica</button>
                     <button class="btn btn-outline-success" type="button" onclick="filterSajam()">Sajam</button>
                     <button class="btn btn-outline-success" type="button" onclick="filterOstalo()">Ostalo</button>
                     <button class="btn btn-outline-success" type="button" onclick="filterSve()">Prikaži sve</button>
+=======
+                    <button class="btn btn-outline-success izbornik" type="button">Koncert</button>
+                    <button class="btn btn-outline-success izbornik" type="button">Prosvjed</button>
+                    <button class="btn btn-outline-success izbornik" type="button">Druženje</button>
+                    <button class="btn btn-outline-success izbornik" type="button">Radionica</button>
+                    <button class="btn btn-outline-success izbornik" type="button">Ostalo</button>
+>>>>>>> bc0a8c44f6ab486018ce1e1debf3f591177c1129
                 </div>
             </div>
             

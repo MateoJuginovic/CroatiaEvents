@@ -1,3 +1,14 @@
+<<<<<<< HEAD
+=======
+body{
+    background: rgb(4,73,199);
+    background: linear-gradient(0deg, rgba(4,73,199,0.8606793059020483) 37%, rgba(238,76,197,0.8746849081429446) 78%);
+}
+
+.prvi{
+    height: auto;
+}
+>>>>>>> bc0a8c44f6ab486018ce1e1debf3f591177c1129
 .card{
     float: left;
     margin: 5px;
@@ -33,7 +44,61 @@ h2{
 }
 
 h3{
-    font-family: 'Courier New', Courier, monospace;
+    font-family: Soleil,Helvetica,Arial,sans-serif;
     font-size: 50px !important;
     font-weight: 500 !important;
+    text-shadow: 3px 3px 3px  #eeeeee;
 }
+<<<<<<< HEAD
+=======
+
+.popis_gradova{
+    height: fit-content;
+    padding: 8px 0px 8px 0px;
+    background-color: red;
+    margin: 0px 0px 1px 0px;
+    text-align: center;
+}
+
+.btn {
+    color: #04b4d4 !important;
+}
+
+.btn :hover{
+    /*ovo je onaj sta ne radi*/
+    background-color: rgba(238,76,197,0.8746849081429446) !important;
+    color: white !important;
+}
+
+#izbornik{
+    width: 465px;
+    height: 60px;
+    margin: auto;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+}
+
+.izbornik{
+    margin: auto;
+    margin-top: 12px;
+}
+
+#najpopularniji{
+    padding-bottom: 50px;
+    height: auto;
+}
+
+#najnoviji{
+    padding-bottom: 50px;
+    height: auto;
+}
+
+#najnoviji.row{
+    margin-top: none;
+}
+
+#najpopularniji.row{
+    margin: none;
+}
+>>>>>>> bc0a8c44f6ab486018ce1e1debf3f591177c1129
