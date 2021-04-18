@@ -1,12 +1,15 @@
 body{
     background: rgb(4,73,199);
-    background: linear-gradient(0deg, rgba(4,73,199,0.8606793059020483) 37%, rgba(238,76,197,0.8746849081429446) 78%);
+    background: linear-gradient(0deg, rgba(4, 72, 199, 0.363) 37%, rgba(238, 76, 197, 0.356) 78%);
 }
 
 
 .navbar{
     border-bottom: 1px solid #dadce0;
     background-color: white;
+}
+.navbar .btn{
+    border: 1px solid #04b4d4 !important;
 }
 
 
@@ -19,10 +22,13 @@ body{
     object-fit: cover;
 }
 .card-body{
-    height: 150px;
+    height: fit-content;
 }
 .card-okvir{
     min-height: 600px;
+}
+.card-title{
+    height: auto;
 }
 
 
@@ -42,7 +48,6 @@ h3{
     color: #04b4d4 !important;
 }
 .btn:hover{
-    /*ovo je onaj sta ne radi*/
     background-color: rgba(238,76,197,0.8746849081429446) !important;
     color: white !important;
 }
@@ -79,5 +84,3 @@ h3{
 #najnoviji.row{
     margin-top: none;
 }
-
-

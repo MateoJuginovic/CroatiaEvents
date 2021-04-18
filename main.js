@@ -1,20 +1,18 @@
-function Event(naziv, opis, datum, vrijeme, adresa, vrsta, brojac){
+function Event(naziv, opis, datum, vrijeme, adresa, vrsta, imeSlike){
     this.naziv = naziv;
     this.opis = opis;
     this.datum = datum;
     this.vrijeme = vrijeme;
     this.adresa = adresa;
     this.vrsta = vrsta;
-    this.brojac = 0;
+    this.slika = imeSlike;
     this.ispis = function(){
-        console.log(this.naziv + " " + this.opis + " " + this.datum + " " + this.vrijeme+ " " + this.adresa + " " + this.vrsta + " " + this.brojac);
+        console.log(this.naziv + " " + this.opis + " " + this.datum + " " + this.vrijeme+ " " + this.adresa + " " + this.vrsta + " " + this.slika);
     }
 }
 
-
-
-let n = 1;
 let niz = [];
+let n = 4;
 
 function unos(){
   let naziv = document.getElementById("nazivUnos").value;
@@ -23,36 +21,41 @@ function unos(){
   let vrijeme = document.getElementById("vrijemeUnos").value;
   let adresa = document.getElementById("adresaUnos").value;
   let vrsta = document.getElementById("vrstaUnos").value;
+  let slika = document.getElementById("slikaUnos");
 
-  if(naziv != "" && opis != "" && datum != "" && vrijeme != "" && adresa != "" && vrsta != ""){
+  let imeSlike;
+  let x = slika.files;
+  for (var i = 0; i < x.length; i++) {
+    imeSlike = x[i].name;
+  }
+
+  if(naziv != "" && opis != "" && datum != "" && vrijeme != "" && adresa != "" && vrsta != "Odaberi vrstu događaja" && imeSlike != undefined){
     let event = []
 
-    event[n] = new Event(naziv, opis, datum, vrijeme, adresa, vrsta);
-    
-    event[n].ispis();
+    event[n] = new Event(naziv, opis, datum, vrijeme, adresa, vrsta, imeSlike);
 
     niz.push(event[n]);
 
     n++;
 
-    document.getElementById("sadrzaj").innerHTML += `
-    <div class="col-12 col-sm-6 col-md-4 col-lg-3 card-okvir">
-      <div class="card" style="max-width:100%;">
-          <img src="slika.png" class="card-img-top" alt="...">
+    let sadrzaj2 = document.getElementById("sadrzaj2");
+
+    sadrzaj2.innerHTML += `
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 card-okvir">
+        <div class="card" style="max-width:100%;">
+          <img src="${imeSlike}" class="card-img-top" alt="Slika nedostupna">
           <div class="card-body">
-              <h5 class="card-title">${naziv}</h5>
-              <p class="card-text">${opis}</p>
+            <h5 class="card-title">${naziv}</h5>
+            <p class="card-text overflow-auto">${opis}</p>
           </div>
           <ul class="list-group list-group-flush">
-              <li class="list-group-item">${vrsta}</li>
-              <li class="list-group-item">${datum}</li>
-              <li class="list-group-item">${vrijeme}</li>
-              <li class="list-group-item">${adresa}</li>
-              <li class="list-group-item"><button class="btn btn-outline-success" type="button" data-toggle="button" aria-pressed="false" autocomplete="off" style="width: 100%;" class="zanimaMe">Zanima me</button></li>
+            <li class="list-group-item">${vrsta}</li>
+            <li class="list-group-item">${datum}</li>
+            <li class="list-group-item">${vrijeme}</li>
+            <li class="list-group-item overflow-auto">${adresa}</li>
           </ul>
-      </div>
-    </div>`;
-    console.log(niz);
+        </div>
+      </div>`;
   }else{
     alert("Unesite sve potrebne podatke");
   }
@@ -61,29 +64,25 @@ function unos(){
 
 
 //-----Filtriranje-----
-let sadrzaj = document.getElementById("sadrzaj");
-
 function filterKoncert(){
-  document.getElementById("sadrzaj").innerHTML = "";
+  sadrzaj2.innerHTML = "";
   for(index in niz){
-    console.log(niz[index].vrsta);
     if(niz[index].vrsta == "Koncert"){
-      
-      document.getElementById("sadrzaj").innerHTML += `
+      sadrzaj2.innerHTML += `
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 card-okvir">
           <div class="card" style="max-width:100%;">
-              <img src="slika.png" class="card-img-top" alt="...">
-              <div class="card-body">
-                  <h5 class="card-title">${niz[index].naziv}</h5>
-                  <p class="card-text">${niz[index].opis}</p>
-              </div>
-              <ul class="list-group list-group-flush">
-                  <li class="list-group-item">${niz[index].vrsta}</li>
-                  <li class="list-group-item">${niz[index].datum}</li>
-                  <li class="list-group-item">${niz[index].vrijeme}</li>
-                  <li class="list-group-item">${niz[index].adresa}</li>
-                  <li class="list-group-item"><button class="btn btn-outline-success" type="button" data-toggle="button" aria-pressed="false" autocomplete="off" style="width: 100%;" class="zanimaMe">Zanima me</button></li>
-              </ul>
+            <img src="${niz[index].slika}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">${niz[index].naziv}</h5>
+              <p class="card-text" overflow-auto>${niz[index].opis}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">${niz[index].vrsta}</li>
+              <li class="list-group-item">${niz[index].datum}</li>
+              <li class="list-group-item">${niz[index].vrijeme}</li>
+              <li class="list-group-item overflow-auto">${niz[index].adresa}</li>
+              
+            </ul>
           </div>
         </div>`;
     }
@@ -91,26 +90,24 @@ function filterKoncert(){
 }
 
 function filterProsvjed(){
-  document.getElementById("sadrzaj").innerHTML = "";
+  sadrzaj2.innerHTML = "";
   for(index in niz){
-    console.log(niz[index].vrsta);
     if(niz[index].vrsta == "Prosvjed"){
-      
-      document.getElementById("sadrzaj").innerHTML += `
+      sadrzaj2.innerHTML += `
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 card-okvir">
           <div class="card" style="max-width:100%;">
-              <img src="slika.png" class="card-img-top" alt="...">
-              <div class="card-body">
-                  <h5 class="card-title">${niz[index].naziv}</h5>
-                  <p class="card-text">${niz[index].opis}</p>
-              </div>
-              <ul class="list-group list-group-flush">
-                  <li class="list-group-item">${niz[index].vrsta}</li>
-                  <li class="list-group-item">${niz[index].datum}</li>
-                  <li class="list-group-item">${niz[index].vrijeme}</li>
-                  <li class="list-group-item">${niz[index].adresa}</li>
-                  <li class="list-group-item"><button class="btn btn-outline-success" type="button" data-toggle="button" aria-pressed="false" autocomplete="off" style="width: 100%;" class="zanimaMe">Zanima me</button></li>
-              </ul>
+            <img src="${niz[index].slika}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">${niz[index].naziv}</h5>
+              <p class="card-text overflow-auto">${niz[index].opis}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">${niz[index].vrsta}</li>
+              <li class="list-group-item">${niz[index].datum}</li>
+              <li class="list-group-item">${niz[index].vrijeme}</li>
+              <li class="list-group-item overflow-auto">${niz[index].adresa}</li>
+              
+            </ul>
           </div>
         </div>`;
     }
@@ -118,26 +115,24 @@ function filterProsvjed(){
 }
 
 function filterRadionica(){
-  document.getElementById("sadrzaj").innerHTML = "";
+  sadrzaj2.innerHTML = "";
   for(index in niz){
-    console.log(niz[index].vrsta);
     if(niz[index].vrsta == "Radionica"){
-      
-      document.getElementById("sadrzaj").innerHTML += `
+      sadrzaj2.innerHTML += `
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 card-okvir">
           <div class="card" style="max-width:100%;">
-              <img src="slika.png" class="card-img-top" alt="...">
-              <div class="card-body">
-                  <h5 class="card-title">${niz[index].naziv}</h5>
-                  <p class="card-text">${niz[index].opis}</p>
-              </div>
-              <ul class="list-group list-group-flush">
-                  <li class="list-group-item">${niz[index].vrsta}</li>
-                  <li class="list-group-item">${niz[index].datum}</li>
-                  <li class="list-group-item">${niz[index].vrijeme}</li>
-                  <li class="list-group-item">${niz[index].adresa}</li>
-                  <li class="list-group-item"><button class="btn btn-outline-success" type="button" data-toggle="button" aria-pressed="false" autocomplete="off" style="width: 100%;" class="zanimaMe">Zanima me</button></li>
-              </ul>
+            <img src="${niz[index].slika}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">${niz[index].naziv}</h5>
+              <p class="card-text overflow-auto">${niz[index].opis}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">${niz[index].vrsta}</li>
+              <li class="list-group-item">${niz[index].datum}</li>
+              <li class="list-group-item">${niz[index].vrijeme}</li>
+              <li class="list-group-item overflow-auto">${niz[index].adresa}</li>
+              
+            </ul>
           </div>
         </div>`;
     }
@@ -145,26 +140,24 @@ function filterRadionica(){
 }
 
 function filterSajam(){
-  document.getElementById("sadrzaj").innerHTML = "";
+  sadrzaj2.innerHTML = "";
   for(index in niz){
-    console.log(niz[index].vrsta);
     if(niz[index].vrsta == "Sajam"){
-      
-      document.getElementById("sadrzaj").innerHTML += `
+      sadrzaj2.innerHTML += `
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 card-okvir">
           <div class="card" style="max-width:100%;">
-              <img src="slika.png" class="card-img-top" alt="...">
-              <div class="card-body">
-                  <h5 class="card-title">${niz[index].naziv}</h5>
-                  <p class="card-text">${niz[index].opis}</p>
-              </div>
-              <ul class="list-group list-group-flush">
-                  <li class="list-group-item">${niz[index].vrsta}</li>
-                  <li class="list-group-item">${niz[index].datum}</li>
-                  <li class="list-group-item">${niz[index].vrijeme}</li>
-                  <li class="list-group-item">${niz[index].adresa}</li>
-                  <li class="list-group-item"><button class="btn btn-outline-success" type="button" data-toggle="button" aria-pressed="false" autocomplete="off" style="width: 100%;" class="zanimaMe">Zanima me</button></li>
-              </ul>
+            <img src="${niz[index].slika}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">${niz[index].naziv}</h5>
+              <p class="card-text overflow-auto">${niz[index].opis}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">${niz[index].vrsta}</li>
+              <li class="list-group-item">${niz[index].datum}</li>
+              <li class="list-group-item">${niz[index].vrijeme}</li>
+              <li class="list-group-item overflow-auto">${niz[index].adresa}</li>
+              
+            </ul>
           </div>
         </div>`;
     }
@@ -172,26 +165,24 @@ function filterSajam(){
 }
 
 function filterOstalo(){
-  document.getElementById("sadrzaj").innerHTML = "";
+  sadrzaj2.innerHTML = "";
   for(index in niz){
-    console.log(niz[index].vrsta);
     if(niz[index].vrsta == "Ostalo"){
-      
-      document.getElementById("sadrzaj").innerHTML += `
+      sadrzaj2.innerHTML += `
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 card-okvir">
           <div class="card" style="max-width:100%;">
-              <img src="slika.png" class="card-img-top" alt="...">
-              <div class="card-body">
-                  <h5 class="card-title">${niz[index].naziv}</h5>
-                  <p class="card-text">${niz[index].opis}</p>
-              </div>
-              <ul class="list-group list-group-flush">
-                  <li class="list-group-item">${niz[index].vrsta}</li>
-                  <li class="list-group-item">${niz[index].datum}</li>
-                  <li class="list-group-item">${niz[index].vrijeme}</li>
-                  <li class="list-group-item">${niz[index].adresa}</li>
-                  <li class="list-group-item"><button class="btn btn-outline-success" type="button" data-toggle="button" aria-pressed="false" autocomplete="off" style="width: 100%;" class="zanimaMe">Zanima me</button></li>
-              </ul>
+            <img src="${niz[index].slika}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">${niz[index].naziv}</h5>
+              <p class="card-text overflow-auto">${niz[index].opis}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">${niz[index].vrsta}</li>
+              <li class="list-group-item">${niz[index].datum}</li>
+              <li class="list-group-item">${niz[index].vrijeme}</li>
+              <li class="list-group-item overflow-auto">${niz[index].adresa}</li>
+              
+            </ul>
           </div>
         </div>`;
     }
@@ -199,23 +190,23 @@ function filterOstalo(){
 }
 
 function filterSve(){
-  document.getElementById("sadrzaj").innerHTML = "";
+  sadrzaj2.innerHTML = "";
   for(index in niz){
-    document.getElementById("sadrzaj").innerHTML += `
+    sadrzaj2.innerHTML += `
     <div class="col-12 col-sm-6 col-md-4 col-lg-3 card-okvir">
       <div class="card" style="max-width:100%;">
-          <img src="slika.png" class="card-img-top" alt="...">
-          <div class="card-body">
-              <h5 class="card-title">${niz[index].naziv}</h5>
-              <p class="card-text">${niz[index].opis}</p>
-          </div>
-          <ul class="list-group list-group-flush">
-              <li class="list-group-item">${niz[index].vrsta}</li>
-              <li class="list-group-item">${niz[index].datum}</li>
-              <li class="list-group-item">${niz[index].vrijeme}</li>
-              <li class="list-group-item">${niz[index].adresa}</li>
-              <li class="list-group-item"><button class="btn btn-outline-success" type="button" data-toggle="button" aria-pressed="false" autocomplete="off" style="width: 100%;" class="zanimaMe">Zanima me</button></li>
-          </ul>
+        <img src="${niz[index].slika}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">${niz[index].naziv}</h5>
+          <p class="card-text overflow-auto">${niz[index].opis}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">${niz[index].vrsta}</li>
+          <li class="list-group-item">${niz[index].datum}</li>
+          <li class="list-group-item">${niz[index].vrijeme}</li>
+          <li class="list-group-item overflow-auto">${niz[index].adresa}</li>
+          
+        </ul>
       </div>
     </div>`;
   }
@@ -225,30 +216,28 @@ function filterSve(){
 
 
 //-----Search-----
-
 let search = document.getElementById("search");
 
 document.getElementById("search").addEventListener("keyup", (event) =>{
   let pretraga = event.currentTarget.value;
-  console.log(pretraga);
-  document.getElementById("sadrzaj").innerHTML = "";
+  sadrzaj2.innerHTML = "";
 
   for(index in niz){
     if(niz[index].naziv.includes(pretraga)){
-      document.getElementById("sadrzaj").innerHTML += `
+      sadrzaj2.innerHTML += `
       <div class="col-12 col-sm-6 col-md-4 col-lg-3 card-okvir">
         <div class="card" style="max-width:100%;">
-          <img src="slika.png" class="card-img-top" alt="...">
+          <img src="${niz[index].slika}" class="card-img-top" alt="...">
           <div class="card-body">
-              <h5 class="card-title">${niz[index].naziv}</h5>
-              <p class="card-text">${niz[index].opis}</p>
+            <h5 class="card-title">${niz[index].naziv}</h5>
+            <p class="card-text overflow-auto">${niz[index].opis}</p>
           </div>
           <ul class="list-group list-group-flush">
-              <li class="list-group-item">${niz[index].vrsta}</li>
-              <li class="list-group-item">${niz[index].datum}</li>
-              <li class="list-group-item">${niz[index].vrijeme}</li>
-              <li class="list-group-item">${niz[index].adresa}</li>
-              <li class="list-group-item"><button class="btn btn-outline-success" type="button" data-toggle="button" aria-pressed="false" autocomplete="off" style="width: 100%;" class="zanimaMe">Zanima me</button></li>
+            <li class="list-group-item">${niz[index].vrsta}</li>
+            <li class="list-group-item">${niz[index].datum}</li>
+            <li class="list-group-item">${niz[index].vrijeme}</li>
+            <li class="list-group-item overflow-auto">${niz[index].adresa}</li>
+            
           </ul>
         </div>
       </div>`;
@@ -257,8 +246,93 @@ document.getElementById("search").addEventListener("keyup", (event) =>{
 })
 //----------
 
-$(document).ready(function () {
-  $(".zanimaMe").click(function () {
-    alert('You clicked the form' + this.getAttribute('class'));
-  })
-})
+
+//-----Unos pet fiksiranih evenata-----
+let event1 = new Event("Jelena Rozga, Koncert", "Atraktivni koncert jedinstvene zvijezde hrvatske estrade za sve uzraste!", "2021-04-11", "20:30", "Spaladium Arena Split", "Koncert", "slika.jpg");
+let event2 = new Event("Prosvjed ugostitelja", "Prosvjed ugostitelja protiv nametnutih i nepoštenih korona mjera.", "2021-07-02", "14:00", "Zagreb, Split, Duborvnik", "Prosvjed", "slika2.jpeg");
+let event3 = new Event("Radionica za mlade", "Radionica za djecu osnovnih škola koju provodi udruga iz Splita.", "2021-11-09", "15:40", "Split", "Radionica", "slika3.jpg");
+let event4 = new Event("Shift konferencija", "Tijekom dva dana Shift postaje mjesto okupljanja ljudi širom svijeta.", "2021-10-06", "13:00", "Split", "Sajam", "slika4.jpg");
+let event5 = new Event("Turnir baluna", "Tradicionalni turnir malog baluna svih uzrasta. Uplata 200kn po ekipi.", "2021-11-08", "12:00", "Šibenik", "Ostalo", "slika5.jpg");
+
+niz.push(event1);
+niz.push(event2);
+niz.push(event3);
+niz.push(event4);
+niz.push(event5);
+
+for(index in niz){
+  sadrzaj2.innerHTML += `
+  <div class="col-12 col-sm-6 col-md-4 col-lg-3 card-okvir">
+    <div class="card" style="max-width:100%;">
+      <img src="${niz[index].slika}" class="card-img-top" alt="Slika nedostupna">
+      <div class="card-body">
+        <h5 class="card-title">${niz[index].naziv}</h5>
+        <p class="card-text overflow-auto">${niz[index].opis}</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">${niz[index].vrsta}</li>
+        <li class="list-group-item">${niz[index].datum}</li>
+        <li class="list-group-item">${niz[index].vrijeme}</li>
+        <li class="list-group-item overflow-auto">${niz[index].adresa}</li>
+        
+      </ul>
+    </div>
+  </div>`;
+}
+//----------
+
+
+
+//-----Unos triju najpopularnijih evenata-----
+let sadrzaj1 = document.getElementById("sadrzaj1");
+
+sadrzaj1.innerHTML += `
+  <div class="col-12 col-sm-6 col-md-4 col-lg-4 card-okvir">
+    <div class="card" style="max-width:100%;">
+      <img src="${event1.slika}" class="card-img-top" alt="Slika nedostupna">
+      <div class="card-body">
+        <h5 class="card-title">${event1.naziv}</h5>
+        <p class="card-text overflow-auto">${niz[index].opis}</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">${event1.vrsta}</li>
+        <li class="list-group-item">${event1.datum}</li>
+        <li class="list-group-item">${event1.vrijeme}</li>
+        <li class="list-group-item overflow-auto">${event1.adresa}</li>
+      </ul>
+    </div>
+  </div>`;
+
+sadrzaj1.innerHTML += `
+  <div class="col-12 col-sm-6 col-md-4 col-lg-4 card-okvir">
+    <div class="card" style="max-width:100%;">
+      <img src="${event2.slika}" class="card-img-top" alt="Slika nedostupna">
+      <div class="card-body">
+        <h5 class="card-title">${event2.naziv}</h5>
+        <p class="card-text overflow-auto">${event2.opis}</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">${event2.vrsta}</li>
+        <li class="list-group-item">${event2.datum}</li>
+        <li class="list-group-item">${event2.vrijeme}</li>
+        <li class="list-group-item overflow-auto">${event2.adresa}</li>
+      </ul>
+    </div>
+  </div>`;
+
+sadrzaj1.innerHTML += `
+  <div class="col-12 col-sm-6 col-md-4 col-lg-4 card-okvir">
+    <div class="card" style="max-width:100%;">
+      <img src="${event4.slika}" class="card-img-top" alt="Slika nedostupna">
+      <div class="card-body">
+        <h5 class="card-title">${event4.naziv}</h5>
+        <p class="card-text overflow-auto">${event4.opis}</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">${event4.vrsta}</li>
+        <li class="list-group-item">${event4.datum}</li>
+        <li class="list-group-item">${event4.vrijeme}</li>
+        <li class="list-group-item overflow-auto">${event4.adresa}</li>
+      </ul>
+    </div>
+  </div>`;

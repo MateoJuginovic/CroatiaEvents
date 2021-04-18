@@ -6,84 +6,38 @@
     <title>CroatiaEvents</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-md sticky-top">
-        <div class="container-fluid" >
-            <a class="navbar-brand" href="#" style="position: relative; left: 2%;"><h2>CroatiaEvents</h2></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#padanje" aria-controls="padanje" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="padanje"><br>
-                <form class="d-flex d-block flex-row mx-md-auto mx-0">
-                    <input class="form-control me-2" type="search" placeholder="Pretraži event" aria-label="Search" size="40px" id="search">
-                </form><br>
-                <button class="btn btn-outline-success" id="dodaj" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button">Dodaj događaj</button>
-            </div>
+<!--Navigacija-->
+<nav class="navbar navbar-expand-md">
+    <div class="container-fluid" >
+        <a class="navbar-brand" style="position: relative; left: 2%;"><h2>CroatiaEvents</h2></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#padanje" aria-controls="padanje" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="padanje"><br>
+            <form class="d-flex d-block flex-row mx-md-auto mx-0">
+                <input class="form-control me-2" type="search" placeholder="Pretraži event" aria-label="Search" size="40px" id="search">
+            </form><br>
+            <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#modal" type="button">Dodaj event</button>
         </div>
-    </nav>
-
-
-
+    </div>
+</nav>
+<!---->
 
 
 <div class="container-fluid">   
                 
-    <div class="row" id="najpopularniji"><!-- style="background-color: #04b4d4;"-->
+    <div class="row" id="najpopularniji">
         <div class="col" style="height: auto;">
             <div class="col" style="height: auto; text-align: center; padding-top: 30px; padding-bottom: 30px;">
-                <h3>Najpopularniji događaji</h3>
+                <h3>Najpopularniji eventi</h3>
             </div>
-
             <div class="container" style="max-width: 1000px;">
-                <div class="row">
+                <div class="row" id="sadrzaj1">
 
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-4 card-okvir">
-                        <div class="card">
-                            <img src="slika.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Jelena Rozga, koncert</h5>
-                                <p class="card-text">OPIS: Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">28.6.2020. - 29.6.2020.</li>
-                                <li class="list-group-item">Zagreb</li>
-                                <li class="list-group-item">Ulica kralja Zvonimira, 41</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-4 card-okvir">
-                        <div class="card">
-                            <img src="slika.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Jelena Rozga, koncert</h5>
-                                <p class="card-text">OPIS: Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">28.6.2020. - 29.6.2020.</li>
-                                <li class="list-group-item">Zagreb</li>
-                                <li class="list-group-item">Ulica kralja Zvonimira, 41</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-4 card-okvir">
-                        <div class="card">
-                            <img src="slika.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Jelena Rozga, koncert</h5>
-                                <p class="card-text">OPIS: Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">28.6.2020. - 29.6.2020.</li>
-                                <li class="list-group-item">Zagreb</li>
-                                <li class="list-group-item">Ulica kralja Zvonimira, 41</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
+                                        
 
                 </div>                
             </div>
@@ -92,41 +46,23 @@
 
     
                 
-    <div class="row" id="najnoviji" style="margin-top: 0px;"><!--background-color: #0449c7; -->
+    <div class="row" id="najnoviji" style="margin-top: 0px;">
         <div class="col">
             <div class="col" style="height: auto; text-align: center; padding-top: 30px; padding-bottom: 30px;">
-                <h3>Najnoviji događaji</h3>
+                <h3>Najnoviji eventi</h3>
             </div>
-
-            <div class="row" id="izbornik"><!-- style=" background-color: aquamarine;"-->
-                <div class="col-4 col-md-2"ž><button class="btn btn-outline-success izbornik" type="button" onclick="filterKoncert()">Koncert</button></div>
-                <div class="col-4 col-md-2"><button class="btn btn-outline-success izbornik" type="button" onclick="filterProsvjed()">Prosvjed</button></div>
-                <div class="col-4 col-md-2"><button class="btn btn-outline-success izbornik" type="button" onclick="filterRadionica()">Radionica</button></div>
-                <div class="col-4 col-md-2"><button class="btn btn-outline-success izbornik" type="button" onclick="filterSajam()">Sajam</button></div>
-                <div class="col-4 col-md-2"><button class="btn btn-outline-success izbornik" type="button" onclick="filterOstalo()">Ostalo</button></div>
-                <div class="col-4 col-md-2"><button class="btn btn-outline-success izbornik" type="button" onclick="filterSve()">Sve</button></div>
+            <div class="row" id="izbornik">
+                <div class="col-4 col-md-2"><button class="btn izbornik" type="button" onclick="filterKoncert()">Koncert</button></div>
+                <div class="col-4 col-md-2"><button class="btn izbornik" type="button" onclick="filterProsvjed()">Prosvjed</button></div>
+                <div class="col-4 col-md-2"><button class="btn izbornik" type="button" onclick="filterRadionica()">Radionica</button></div>
+                <div class="col-4 col-md-2"><button class="btn izbornik" type="button" onclick="filterSajam()">Sajam</button></div>
+                <div class="col-4 col-md-2"><button class="btn izbornik" type="button" onclick="filterOstalo()">Ostalo</button></div>
+                <div class="col-4 col-md-2"><button class="btn izbornik" type="button" onclick="filterSve()">Sve</button></div>
             </div>
-            
-
             <div class="container" style="max-width: 1200px;  margin-top: 40px; margin-bottom: 40px;">
-                <div class="row" id="sadrzaj">
+                <div class="row" id="sadrzaj2">
 
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 card-okvir">
-                        <div class="card">
-                            <img src="slika.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Jelena Rozga, koncert</h5>
-                                <p class="card-text">OPIS: Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">28.6.2020. - 29.6.2020.</li>
-                                <li class="list-group-item">20:30</li>
-                                <li class="list-group-item">Zagreb</li>
-                                <li class="list-group-item">Ulica kralja Zvonimira, 41</li>
-                                <li class="list-group-item"><button class="btn btn-outline-success" type="button" data-toggle="button" aria-pressed="false" autocomplete="off" style="width: 100%;">Zanima me</button></li>
-                            </ul>
-                        </div>
-                    </div>
+                    
                     
                 </div>
             </div>
@@ -137,93 +73,97 @@
 
 
 
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Unesite podatke</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-
-            <div class="container-fluid">
-                <form  class="row g-3 needs-validation">
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="mb-3">
-                                <label class="form-label">Naziv</label>
-                                <input type="text" class="form-control" id="nazivUnos" maxlength="20" placeholder="Unesite naziv">
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="mb-3">
-                                <label class="form-label">Dodaj naslovnu sliku</label>
-                                <input class="form-control" type="file" id="slikaUnos" disabled>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="row">
-                        <div class="col">
-                            <div class="mb-3">
-                                <label class="form-label">Opis</label>
-                                <input type="text" class="form-control" id="opisUnos" maxlength="80" placeholder="Unesite opis">
+<!-- Modal -->
+    <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="labela" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="labela">Unesite podatke</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+ 
+                    <div class="container-fluid">
+                        <form  class="row g-3 needs-validation">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Naziv</label>
+                                        <input type="text" class="form-control" id="nazivUnos" maxlength="30" placeholder="Unesite naziv">
+                                    </div>
                                 </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="mb-3">
-                                <label class="form-label">Datum</label>
-                                <input type="date" class="form-control" id="datumUnos">
+                                <div class="col-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Dodaj naslovnu sliku</label>
+                                        <input type="file" id="slikaUnos" accept="image/*">
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="mb-3">
-                                <label class="form-label">Vrijeme početka</label>
-                                <input type="time" class="form-control" id="vrijemeUnos">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label class="form-label">Opis</label>
+                                        <input type="text" class="form-control" id="opisUnos" maxlength="80" placeholder="Unesite opis">
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col">
-                            <div class="mb-3">
-                                <label class="form-label">Adresa</label>
-                                <input type="text" class="form-control" id="adresaUnos" maxlength="30" placeholder="Unesite adresu">
+         
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Datum</label>
+                                        <input type="date" class="form-control" id="datumUnos">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Vrijeme početka</label>
+                                        <input type="time" class="form-control" id="vrijemeUnos">
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+         
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label class="form-label">Adresa</label>
+                                        <input type="text" class="form-control" id="adresaUnos" maxlength="30" placeholder="Unesite adresu">
+                                    </div>
+                                </div>
+                            </div>
+         
+                            <div class="row">
+                                <div class="col">
+                                    <select class="form-select" aria-label="Default select example" id="vrstaUnos" required>
+                                        <option selected disabled>Odaberi vrstu događaja</option>
+                                        <option value="Koncert">Koncert</option>
+                                        <option value="Prosvjed">Prosvjed</option>
+                                        <option value="Radionica">Radionica</option>
+                                        <option value="Sajam">Sajam</option>
+                                        <option value="Ostalo">Ostalo</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
                     </div>
+         
+                </div>
 
-                    <div class="row">
-                        <div class="col">
-                            <select class="form-select" aria-label="Default select example" id="vrstaUnos" required>
-                                <option selected disabled>Odaberi vrstu događaja</option>
-                                <option value="Koncert">Koncert</option>
-                                <option value="Prosvjed">Prosvjed</option>
-                                <option value="Radionica">Radionica</option>
-                                <option value="Sajam">Sajam</option>
-                                <option value="Ostalo">Ostalo</option>
-                            </select>
-                        </div>
-                    </div>
-                </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn" data-bs-dismiss="modal">Zatvori</button>
+                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="unos()">Dodaj event</button>
+                </div>
             </div>
-
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zatvori</button>
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="unos()">Dodaj događaj</button>
-        </div>
-      </div>
     </div>
-  </div>
+<!---->
 
 </div>
 
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src='main.js'></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
 </body>
 </html>
